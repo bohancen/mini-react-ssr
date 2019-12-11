@@ -9,14 +9,20 @@ const port = 9798
 const server = express()
 
 server.get('/',(req,res)=>{
-  nlog(port)
+  // console.log(Object.keys(req))
+  // console.log(req.url)
+  // console.log(req.baseUrl)
+  // console.log(req.params)
+  // console.log(req.query)
+  // console.log(req.headers)
+  // nlog(port)
   res.send(`
     <html>
       <head>
         <title>ssr react</title>
       </head>
       <body>
-        <div id="root">${renderToString(<App />)}</div>
+        <div id="root">${renderToString(<App req={req} />)}</div>
       </body>
     </html>
   `)
