@@ -10,8 +10,14 @@
 
   `yarn - 1.15.2`
 
-## 运行
+## 运行server
 
-  `yarn install`
+  `yarn server`
 
-  `node ./start.js`
+  `yarn server-dev`
+
+## 编译客户端
+
+  `yarn webpack-client`
+
+  `yarn webpack-client-dev`
