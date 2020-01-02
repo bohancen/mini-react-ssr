@@ -1,6 +1,7 @@
-const path = require('path')
+// const path = require('path')
 const React = require('react')
 const express = require('express')
+const compression = require('compression')
 const {renderToString} = require('react-dom/server')
 const App = require('./app').default
 
@@ -9,6 +10,19 @@ const NODE_ENV = process.env.NODE_ENV || 8090
 
 const server = express()
 
+
+
+ 
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+// 启用gzip
+server.use(compression({ filter: shouldCompress }))
 server.use('/static',express.static('./static'))
 
 server.get('/',(req,res)=>{
@@ -26,7 +40,10 @@ server.get('/',(req,res)=>{
         <div id="root">${renderToString(
           React.createElement(App,{headers})
         )}</div>
-        <script src="/static/js/index.js"></script>
+        <script src="/static/js/public/polyfill.7.2.5.min.js"></script>
+        <script src="/static/js/public/react.production.min.js"></script>
+        <script src="/static/js/public/react-dom.production.min.js"></script>
+        <script src="/static/js/build/index.js"></script>
       </body>
     </html>
   `)
