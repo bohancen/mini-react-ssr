@@ -1,12 +1,15 @@
 import React from 'react'
 
+async function dialog(text){
+  let {dialog} = await import('./dialog')
+  dialog(text)
+}
+
 class App extends React.Component {
   async click({key,val}){
-    let {dialog} = await import('./dialog')
     dialog(key+ '--' +val)
   }
   async button(){
-    let {dialog} = await import('./dialog')
     dialog('button')
   }
   render(){
