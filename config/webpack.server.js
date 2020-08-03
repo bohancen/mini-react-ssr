@@ -6,10 +6,11 @@ console.log(`编译 server...\n当前环境:${env}`)
 const serverConfig = {
   mode: env,
   target: 'node',
-  entry: './src/server/index.js',
+  entry: './src/reactComponents/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname,'../build_server')
+    path: path.resolve(__dirname,'../build_server'),
+    libraryTarget: 'commonjs',
   },
   externals:[nodeExternals()],
   module: {
@@ -24,6 +25,7 @@ const serverConfig = {
           ],
           plugins: [
 						// [require.resolve('@babel/plugin-transform-runtime')],
+            [require.resolve('@babel/plugin-syntax-dynamic-import')],
 					]
         }
       }

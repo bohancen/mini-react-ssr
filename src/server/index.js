@@ -3,7 +3,8 @@ const React = require('react')
 const express = require('express')
 const compression = require('compression')
 const {renderToString} = require('react-dom/server')
-const App = require('./app').default
+// const App = require('./app').default
+const App = require('../../build_server/bundle').default
 
 const PORT = process.env.PORT || 8090
 const NODE_ENV = process.env.NODE_ENV || 8090

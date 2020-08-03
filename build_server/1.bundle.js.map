@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/reactComponents/dialog.js"],"names":["dialog","text","console","log","alert"],"mappings":"gEAAA,SAASA,EAAOC,GAIdC,QAAQC,IAHC,0BAITC,MAAMH,GALR","file":"1.bundle.js","sourcesContent":["function dialog(text){\r\n  let t = `\r\n    hello dialog\r\n  `\r\n  console.log(t)\r\n  alert(text)\r\n}\r\nexport {dialog}"],"sourceRoot":""}
